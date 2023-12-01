@@ -11,7 +11,7 @@ program.parse(process.argv);
 
 const argv = program.opts();
 
-const contacts = require('./db/contacts');
+const contacts = require('./contacts');
 
 const invokeAction = async ({ action, id, name, email, phone }) => {
     switch (action) {
@@ -23,7 +23,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
             return console.log(contact);
         case 'remove':
             const delContact = await contacts.removeContact(id);
-            console.log(delContact);
+            return console.log(delContact);
         case 'add':
             const newContact = await contacts.addContact(name, email, phone);
             return console.log(newContact);
